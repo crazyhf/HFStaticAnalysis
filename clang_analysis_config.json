@@ -1,0 +1,43 @@
+{
+    "///==================================" : "在此JSON文件下, 约定作为注释前缀, 切忌不可用做为字段key",
+    "///=== " : [
+        "clang_analysis_config.json",
+        "HFStaticAnalysis",
+        "Created by linhuafeng on 2019/5/5.",
+        "Copyright © 2019 Haven·Lin. All rights reserved."
+    ],
+    
+    
+    "///=================== token keywords" : [ "这里约定的token keywords分别与analysistoken.hpp里面定义的token相对应",
+        "@OC_SPACE : OC_ANALYSIS_SPACE",
+        "@ATTR_ATOMIC : OC_PROPERTY_ATOMIC",
+        "@ATTR_ACCESSOR : OC_PROPERTY_ACCESSOR",
+        "@ATTR_READWRITE : OC_PROPERTY_READWRITE",
+        "@ATTR_NULLABLE : OC_PROPERTY_NULLABLE",
+        "@ATTR_MEMORY : OC_PROPERTY_MEMORY"
+    ],
+    
+    "///========================= operator" : [ "这里约定插件支持的规则操作符",
+        "? : optional, eg. @ATTR_ATOMIC?",
+        "! : required, eg. @ATTR_ATOMIC!",
+        "* : count >= 0, eg. @ATTR_ATOMIC!*",
+        "+ : count >= 1, eg. @ATTR_ATOMIC!+",
+        "- : count = 0, eg. @OC_SPACE!-",
+        "\ : 转义"
+    ],
+    
+    
+    "enableDebugTrace" : false,
+    
+    "ignoreFileTypes" : [ "pbobjc.h", "pbobjc.m" ],
+	"ignoreDirectories" : [ "Pods", "ThirdParty", "ClangAnalysis" ],
+    
+    
+    "///======================== code rule" : "配置代码扫描规则",
+    
+    "@property_attr" : "@ATTR_NULLABLE? @ATTR_ATOMIC! @ATTR_MEMORY! @ATTR_READWRITE? @ATTR_ACCESSOR? @ATTR_ACCESSOR?",
+    
+    "@decl_pointer_type" : "@OC_SPACE+\*@OC_SPACE-",
+    
+    "@category_method_prefix" : [ "bs", "qy" ]
+}
